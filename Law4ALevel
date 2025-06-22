@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Law for A‑Level Students</title>
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root { 
+      --primary:#243B55;
+      --secondary:#F0F4F8;
+      --accent:#FF6B6B;
+      --text:#2F3E50;
+      --heading:#243B55;
+      --maxW:1200px;
+      --gap:1.5rem; 
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--secondary);
+      color:var(--text);
+      line-height:1.8;
+    }
+    header{
+      background:var(--primary) url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color:white;
+      padding:5rem 1rem 6rem;
+      text-align:center;
+      position:relative;
+    }
+    header::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:rgba(36,59,85,0.6);
+    }
+    header .hero-inner{
+      position:relative;
+      max-width:var(--maxW);
+      margin:0 auto;
+    }
+    header h1{
+      font-size:3.8rem;
+      margin-bottom:0.7rem;
+      font-weight:700;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+    header p{
+      font-weight:300;
+      font-size:1.3rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    nav{
+      background:white;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .nav-container{
+      max-width:var(--maxW);
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1rem 2rem;
+    }
+    .nav-logo{
+      font-weight:600;
+      color:var(--primary);
+      font-size:1.7rem;
+    }
+    .nav-menu{
+      list-style:none;
+      display:flex;
+      gap:var(--gap);
+    }    
+    .nav-menu a{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:500;
+      transition:color .3s;
+      font-size:1rem;
+    }
+    .nav-menu a:hover{
+      color:var(--accent);
+    }
+    .nav-toggle{
+      display:none;
+      font-size:1.8rem;
+      color:var(--text);
+      cursor:pointer;
+    }
+    section{
+      padding:4rem 1rem;
+    }
+    .container{
+      max-width:var(--maxW);
+      margin:auto;
+    }
+    .topics-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:var(--gap);
+    }
+    .topic-card{
+      background:white;
+      border-radius:8px;
+      overflow:hidden;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      transition:transform .3s;
+      cursor:pointer;
+    }
+    .topic-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    }
+    .topic-img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+    .topic-body{
+      padding:1.5rem;
+    }
+    .topic-body h3{
+      color:var(--heading);
+      margin-bottom:.5rem;
+    }
+    .topic-body p{
+      font-size:.95rem;
+      color:var(--text);
+    }
+    .topic-detail{
+      background:white;
+      padding:2rem;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      margin:2rem 0;
+    }
+    .topic-detail h4{
+      color:var(--heading);
+      margin-bottom:.5rem;
+    }
+    .ace-section{
+      background:white;
+      padding:2rem;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      margin:2rem 0;
+    }
+    .ace-section h3{
+      color:var(--heading);
+      margin-bottom:1rem;
+    }
+    .ace-section ul{
+      list-style:disc inside;
+      margin-bottom:1rem;
+    }
+    .ace-section li{
+      margin-bottom:0.7rem;
+    }
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:white;
+      padding:.75rem 1.5rem;
+      border-radius:4px;
+      text-decoration:none;
+      font-weight:600;
+      transition:background .3s;
+    }
+    .btn:hover{
+      background:#e35454;
+    }
+    footer{
+      background:var(--primary);
+      color:white;
+      text-align:center;
+      padding:2rem 1rem;
+      margin-top:3rem;
+    }
+    /* Quiz Styles */
+    #quiz-container {
+      background: white;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #quiz-container h2 {
+      text-align: center;
+      color: var(--heading);
+      margin-bottom: 1rem;
+    }
+    .quiz-question {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .quiz-options {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.5rem;
+    }
+    .quiz-options li {
+      margin-bottom: 0.6rem;
+    }
+    .quiz-options label {
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: block;
+      background: #f0f0f0;
+      transition: background 0.3s;
+      user-select:none;
+    }
+    .quiz-options input[type="radio"] {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .quiz-options label:hover {
+      background: var(--accent);
+      color: white;
+    }
+    #submit-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+      font-weight: 700;
+    }
+    #submit-btn:hover {
+      background: #1b2a41;
+    }
+    #quiz-result {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-align: center;
+    }
+    /* Chatbox styles */
+    #chatbox-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      max-width: 320px;
+      font-family: 'Montserrat', sans-serif;
+      z-index: 1000;
+    }
+    #chat-toggle {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      font-size: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #chatbox {
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      background: white;
+      overflow: hidden;
+      margin-top: 10px;
+      height: 400px;
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    #chat-header {
+      background: var(--primary);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: 600;
+      user-select:none;
+    }
+    #chat-messages {
+      height: 320px;
+      overflow-y: auto;
+      padding: 10px;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      color: #333;
+      background: #f9f9f9;
+      flex-grow: 1;
+    }
+    #chat-messages div {
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border-radius: 15px;
+      max-width: 80%;
+      clear: both;
+    }
+    #chat-messages div.user-msg {
+      background: var(--accent);
+      color: white;
+      float: right;
+    }
+    #chat-messages div.bot-msg {
+      background: #e1e1e1;
+      color: #222;
+      float: left;
+    }
+    #chat-form {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    #chat-input {
+      flex-grow: 1;
+      border: none;
+      padding: 10px;
+      font-size: 1rem;
+      outline:none;
+    }
+    #chat-form button {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 0 15px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    #chat-form button:hover {
+      background: #e35454;
+    }
+    @media (max-width: 768px){
+      nav .nav-container{
+        flex-wrap:wrap;
+      }
+      .nav-menu{
+        width: 100%;
+        justify-content:center;
+        margin-top: 0.8rem;
+      }
+      .nav-toggle{
+        display:block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero-inner">
+      <h1>Law for A‑Level Students</h1>
+      <p>Your ultimate guide to mastering A-Level Law with study tips, quizzes, and case analysis.</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">A-Level Law Hub</div>
+      <ul class="nav-menu">
+        <li><a href="#important-cases">Important Cases</a></li>
+        <li><a href="#study-tips">Study Tips</a></li>
+        <li><a href="#daily-quizzes">Daily Quizzes</a></li>
+        <li><a href="#ace-law">Ace Law Section</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="important-cases" class="container">
+    <h2>Important Cases</h2>
+    <div class="topics-list">
+      <div class="topic-card">
+        <img src="https://images.unsplash.com/photo-1556742400-b5a38b0e2a50?auto=format&fit=crop&w=400&q=60" alt="Donoghue v Stevenson" class="topic-img" />
+        <div class="topic-body">
+          <h3>Donoghue v Stevenson (1932)</h3>
+          <p>The foundational case for negligence establishing the 'neighbour principle' and duty of care.</p>
+          <a href="https://www.bailii.org/uk/cases/UKHL/1932/100.html" target="_blank" class="btn">Read Full Case</a>
+        </div>
+      </div>
+      <div class="topic-card">
+        <img src="https://images.unsplash.com/photo-1560841229-5d05e0b399f8?auto=format&fit=crop&w=400&q=60" alt="R v Brown" class="topic-img" />
+        <div class="topic-body">
+          <h3>R v Brown (1993)</h3>
+          <p>Landmark case on consent and criminal law, involving bodily harm in private acts.</p>
+          <a href="https://www.bailii.org/uk/cases/UKHL/1993/19.html" target="_blank" class="btn">Read Full Case</a>
+        </div>
+      </div>
+      <div class="topic-card">
+        <img src="https://images.unsplash.com/photo-1581093588401-78cdd09697cc?auto=format&fit=crop&w=400&q=60" alt="Handyside v UK" class="topic-img" />
+        <div class="topic-body">
+          <h3>Handyside v UK (1976)</h3>
+          <p>Important case regarding freedom of expression under the European Convention on Human Rights.</p>
+          <a href="https://hudoc.echr.coe.int/eng?i=001-57558" target="_blank" class="btn">Read Full Case</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="study-tips" class="container ace-section">
+    <h2>Study Tips for A-Level Law</h2>
+    <ul>
+      <li><strong>Understand key cases:</strong> Don’t just memorize facts — focus on the legal principles and reasoning behind each case.</li>
+      <li><strong>Practice IRAC method:</strong> Issue, Rule, Application, Conclusion — structure your essays clearly.</li>
+      <li><strong>Use past papers:</strong> Familiarize yourself with exam style questions and time yourself while answering.</li>
+      <li><strong>Create flashcards:</strong> Use them for definitions, case facts, and legal principles for active recall.</li>
+      <li><strong>Form study groups:</strong> Explaining topics to peers deepens understanding.</li>
+      <li><strong>Regular revision:</strong> Break study into manageable chunks and revisit topics regularly.</li>
+      <li><strong>Stay updated:</strong> Follow recent legal developments and news related to your syllabus.</li>
+    </ul>
+  </section>
+
+  <section id="ace-law" class="container ace-section">
+    <h2>Ace Law Section: In-Depth Advice</h2>
+    <p>Mastering A-Level Law is about strategy and consistency. Here’s a comprehensive approach:</p>
+    <ul>
+      <li><strong>Build Strong Foundations:</strong> Start with understanding the basic legal concepts and vocabulary. Don’t skip the theory behind the law.</li>
+      <li><strong>Focus on Cases:</strong> Study each landmark case in detail. Know the facts, legal issues, judgments, and significance. Use official links to read the full judgments when possible.</li>
+      <li><strong>Essay Writing:</strong> Perfect the IRAC structure for all essay questions. Always clearly state the issue, apply the relevant law, analyze with examples, and conclude decisively.</li>
+      <li><strong>Past Papers:</strong> Complete at least one past paper every week in exam conditions. Review your answers critically or get feedback from teachers or peers.</li>
+      <li><strong>Mind Maps & Summaries:</strong> Create visual aids to connect concepts and cases; they help with quick revision.</li>
+      <li><strong>Exam Technique:</strong> Manage your time carefully during exams. Allocate marks proportionally and leave time to review your answers.</li>
+      <li><strong>Ask for Help:</strong> Use forums, study groups, or AI tools like the chatbox here to clarify doubts quickly.</li>
+    </ul>
+    <p>Helpful links for further study:</p>
+    <ul>
+      <li><a href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes" target="_blank" class="btn">AQA Past Papers</a></li>
+      <li><a href="https://www.ocr.org.uk/qualifications/as-and-a-level/law-h015-h415/" target="_blank" class="btn">OCR Law Resources</a></li>
+      <li><a href="https://www.jcq.org.uk/exams-office/past-papers/" target="_blank" class="btn">JCQ Past Papers</a></li>
+    </ul>
+  </section>
+
+  <section id="daily-quizzes" class="container" >
+    <h2>Daily Quizzes</h2>
+    <div id="quiz-container">
+      <h3 id="quiz-title">Daily Quiz #1: Test Your Knowledge</h3>
+      <form id="quiz-form">
+        <!-- Quiz questions dynamically generated by JS -->
+      </form>
+      <button id="submit-btn">Submit Answers</button>
+      <div id="quiz-result"></div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 A-Level Law Hub. All rights reserved.
+  </footer>
+
+  <script>
+    // Quiz Data: Multiple quizzes rotating daily
+    const quizzes = [
+      {
+        title: "Daily Quiz #1: Key Cases Challenge",
+        questions: [
+          {
+            q: "What is the key principle established in Donoghue v Stevenson?",
+            options: ["Contract law basics", "Neighbour principle and duty of care", "Criminal negligence", "Freedom of expression"],
+            answer: 1
+          },
+          {
+            q: "Which case is related to consent in criminal law?",
+            options: ["R v Brown", "Handyside v UK", "Donoghue v Stevenson", "R v Ghosh"],
+            answer: 0
+          },
+          {
+            q: "Handyside v UK deals with which human right?",
+            options: ["Right to a fair trial", "Freedom of expression", "Right to privacy", "Right to education"],
+            answer: 1
+          },
+          {
+            q: "Which act gives police power to stop and search?",
+            options: ["PACE 1984", "Human Rights Act", "Data Protection Act", "Education Act"],
+            answer: 0
+          },
+          {
+            q: "What does IRAC stand for in law essay writing?",
+            options: ["Issue, Rule, Application, Conclusion", "Information, Reasoning, Action, Conclusion", "Issue, Result, Answer, Case", "Investigation, Rule, Argument, Case"],
+            answer: 0
+          },
+          {
+            q: "Which case deals with the concept of negligence?",
+            options: ["Donoghue v Stevenson", "R v Brown", "Handyside v UK", "Carlill v Carbolic Smoke Ball"],
+            answer: 0
+          },
+          {
+            q: "Which human right protects freedom of speech in the UK?",
+            options: ["Article 6", "Article 10", "Article 14", "Article 2"],
+            answer: 1
+          },
+          {
+            q: "Which method is best for structuring essays in law?",
+            options: ["IRAC", "PEEL", "SOLO", "SMART"],
+            answer: 0
+          },
+          {
+            q: "What is the significance of case law in A-Level Law?",
+            options: ["It replaces statutes", "It interprets and applies statutes", "It is irrelevant", "It only applies to criminal law"],
+            answer: 1
+          },
+          {
+            q: "How often should you practice past papers?",
+            options: ["Once before exams", "At least once a week", "Never", "Only after lessons"],
+            answer: 1
+          }
+        ]
+      },
+      {
+        title: "Daily Quiz #2: Legal Concepts Review",
+        questions: [
+          {
+            q: "What is the primary purpose of the Human Rights Act 1998?",
+            options: ["To create new laws", "To incorporate ECHR rights into UK law", "To replace Parliament", "To regulate contracts"],
+            answer: 1
+          },
+          {
+            q: "Which legal principle means the judge’s decision is binding on future cases?",
+            options: ["Statutory Interpretation", "Judicial Precedent", "Delegated Legislation", "Equity"],
+            answer: 1
+          },
+          {
+            q: "Which case set the precedent for the 'neighbour principle'?",
+            options: ["Donoghue v Stevenson", "R v Brown", "Carlill v Carbolic Smoke Ball", "Miller v Prime Minister"],
+            answer: 0
+          },
+          {
+            q: "Which part of the law covers contracts between individuals?",
+            options: ["Criminal Law", "Contract Law", "Tort Law", "Constitutional Law"],
+            answer: 1
+          },
+          {
+            q: "Which case relates to consent and bodily harm?",
+            options: ["R v Brown", "Donoghue v Stevenson", "Handyside v UK", "R v Ghosh"],
+            answer: 0
+          },
+          {
+            q: "Which term describes the government making laws without Parliament?",
+            options: ["Judicial Review", "Delegated Legislation", "Precedent", "Statute"],
+            answer: 1
+          },
+          {
+            q: "What does 'statutory interpretation' involve?",
+            options: ["Judges interpreting legislation", "Making new laws", "Writing contracts", "Passing Bills"],
+            answer: 0
+          },
+          {
+            q: "Which document protects data privacy in the UK?",
+            options: ["GDPR", "PACE 1984", "Education Act", "Human Rights Act"],
+            answer: 0
+          },
+          {
+            q: "What is an 'obiter dictum'?",
+            options: ["A binding precedent", "A non-binding judicial comment", "A statute", "A legal principle"],
+            answer: 1
+          },
+          {
+            q: "What is the role of the Supreme Court in the UK?",
+            options: ["Create laws", "Interpret laws and set precedents", "Enforce laws", "Write statutes"],
+            answer: 1
+          }
+        ]
+      }
+    ];
+
+    // Select quiz of the day based on date
+    function getQuizOfTheDay() {
+      const day = new Date().getDate();
+      return quizzes[day % quizzes.length];
+    }
+
+    // Render quiz
+    function renderQuiz() {
+      const quiz = getQuizOfTheDay();
+      const quizForm = document.getElementById('quiz-form');
+      const quizTitle = document.getElementById('quiz-title');
+      quizTitle.textContent = quiz.title;
+      quizForm.innerHTML = '';
+      quiz.questions.forEach((q, idx) => {
+        const div = document.createElement('div');
+        div.classList.add('quiz-question-block');
+        div.innerHTML = `
+          <p class="quiz-question">${idx+1}. ${q.q}</p>
+          <ul class="quiz-options">
+            ${q.options.map((opt, i) => `
+              <li>
+                <label>
+                  <input type="radio" name="q${idx}" value="${i}" required />
+                  ${opt}
+                </label>
+              </li>`).join('')}
+          </ul>
+        `;
+        quizForm.appendChild(div);
+      });
+    }
+
+    // Handle quiz submission
+    document.getElementById('submit-btn').addEventListener('click', function(){
+      const quiz = getQuizOfTheDay();
+      const quizForm = document.getElementById('quiz-form');
+      const formData = new FormData(quizForm);
+      let score = 0;
+      for(let i=0; i<quiz.questions.length; i++){
+        const userAnswer = formData.get('q'+i);
+        if(userAnswer !== null && parseInt(userAnswer) === quiz.questions[i].answer){
+          score++;
+        }
+      }
+      const result = document.getElementById('quiz-result');
+      result.textContent = `You scored ${score} out of ${quiz.questions.length}.`;
+      if(score === quiz.questions.length){
+        result.style.color = 'green';
+        result.textContent += " Perfect score! Well done!";
+      } else if(score >= quiz.questions.length * 0.7){
+        result.style.color = 'orange';
+        result.textContent += " Great job! Keep practicing.";
+      } else {
+        result.style.color = 'red';
+        result.textContent += " Keep studying and try again.";
+      }
+    });
+
+    renderQuiz();
+
+    // Chatbox functionality
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.getElementById('chatbox');
+
+    chatToggle.addEventListener('click', () => {
+      if(chatBox.style.display === 'flex'){
+        chatBox.style.display = 'none';
+      } else {
+        chatBox.style.display = 'flex';
+      }
+    });
+
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // Simulate AI responses (basic keyword matching for demonstration)
+    function getBotResponse(message) {
+      const msg = message.toLowerCase();
+
+      if(msg.includes('donoghue')) return "Donoghue v Stevenson established the 'neighbour principle' and duty of care in negligence.";
+      if(msg.includes('brown')) return "R v Brown is a key case on consent in criminal law involving bodily harm.";
+      if(msg.includes('handyside')) return "Handyside v UK deals with freedom of expression under the European Convention on Human Rights.";
+      if(msg.includes('irac')) return "IRAC stands for Issue, Rule, Application, Conclusion – a method for structuring law essays.";
+      if(msg.includes('cases')) return "Important cases like Donoghue v Stevenson, R v Brown, and Handyside v UK are foundational in A-Level Law.";
+      if(msg.includes('essay')) return "Focus on the IRAC structure and use key cases and statutes to support your arguments.";
+      if(msg.includes('quiz')) return "Try the daily quizzes on this site to test your knowledge and improve.";
+      if(msg.includes('help')) return "I'm here to help! Ask me about cases, essay tips, or anything related to A-Level Law.";
+      if(msg.includes('hi') || msg.includes('hello')) return "Hello! How can I help you with your A-Level Law studies today?";
+      return "Sorry, I don't have an answer for that yet. Try asking about important cases, study tips, or the IRAC method.";
+    }
+
+    chatForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const userMsg = chatInput.value.trim();
+      if(userMsg === '') return;
+
+      // Display user message
+      const userDiv = document.createElement('div');
+      userDiv.classList.add('user-msg');
+      userDiv.textContent = userMsg;
+      chatMessages.appendChild(userDiv);
+
+      // Clear input
+      chatInput.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Bot reply (simulate delay)
+      setTimeout(() => {
+        const botReply = getBotResponse(userMsg);
+        const botDiv = document.createElement('div');
+        botDiv.classList.add('bot-msg');
+        botDiv.textContent = botReply;
+        chatMessages.appendChild(botDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 700);
+    });
+
+  </script>
+
+  <!-- Chatbox container -->
+  <div id="chatbox-container">
+    <button id="chat-toggle" aria-label="Toggle chatbox"><i class="fas fa-comments"></i></button>
+    <div id="chatbox">
+      <div id="chat-header">Law Study Chatbot</div>
+      <div id="chat-messages"></div>
+      <form id="chat-form">
+        <input id="chat-input" type="text" placeholder="Ask me about A-Level Law..." autocomplete="off" />
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
